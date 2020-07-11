@@ -1,0 +1,16 @@
+
+:orphan:
+
+.. _sphx_glr_examples_more_sg_execution_times:
+
+Computation times
+=================
+**00:06.663** total execution time for **examples_more** files:
+
++-------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_more_plot_many.py` (``plot_many.py``)                 | 00:03.390 | 0.0 MB |
++-------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_more_plot_colorpoints2.py` (``plot_colorpoints2.py``) | 00:02.456 | 0.0 MB |
++-------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_more_plot_divide_chain.py` (``plot_divide_chain.py``) | 00:00.817 | 0.0 MB |
++-------------------------------------------------------------------------------+-----------+--------+

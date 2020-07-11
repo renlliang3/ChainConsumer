@@ -1,0 +1,215 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_examples_Basics_plot_statistics.py>`     to download the full example code
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_examples_Basics_plot_statistics.py:
+
+
+==========
+Statistics
+==========
+
+Demonstrates the different statistics you can use with ChainConsumer.
+
+By default, ChainConsumer uses maximum likelihood statistics. Thus you do not
+need to explicitly enable maximum likelihood statistics. If you want to
+anyway, the keyword is `"max"`.
+
+
+.. code-block:: default
+
+
+    import numpy as np
+    from scipy.stats import skewnorm
+    from chainconsumer import ChainConsumer
+
+    # Lets create some data here to set things up
+    np.random.seed(0)
+    data = skewnorm.rvs(5, size=(1000000, 2))
+    parameters = ["$x$", "$y$"]
+
+
+    # Now the normal way of giving data is passing a numpy array and parameter separately
+    c = ChainConsumer().add_chain(data, parameters=parameters).configure(statistics="max")
+    fig = c.plotter.plot()
+    fig.set_size_inches(3 + fig.get_size_inches())  # Resize fig for doco. You don't need this.
+
+
+
+
+.. image:: /examples/Basics/images/sphx_glr_plot_statistics_001.png
+    :alt: $x = 0.38^{+0.78}_{-0.38}$, $y = 0.38^{+0.78}_{-0.38}$
+    :class: sphx-glr-single-img
+
+
+
+
+
+Or we can enable cumulative statistics
+
+
+.. code-block:: default
+
+
+    c = ChainConsumer().add_chain(data, parameters=parameters).configure(statistics="cumulative")
+    fig = c.plotter.plot()
+    fig.set_size_inches(3 + fig.get_size_inches())  # Resize fig for doco. You don't need this.
+
+
+
+
+.. image:: /examples/Basics/images/sphx_glr_plot_statistics_002.png
+    :alt: $x = 0.68^{+0.74}_{-0.50}$, $y = 0.68^{+0.74}_{-0.50}$
+    :class: sphx-glr-single-img
+
+
+
+
+
+Or we can enable mean statistics
+
+
+.. code-block:: default
+
+
+    c = ChainConsumer().add_chain(data, parameters=parameters).configure(statistics="mean")
+    fig = c.plotter.plot()
+    fig.set_size_inches(3 + fig.get_size_inches())  # Resize fig for doco. You don't need this.
+
+
+
+
+.. image:: /examples/Basics/images/sphx_glr_plot_statistics_003.png
+    :alt: $x = 0.79\pm 0.62$, $y = 0.79\pm 0.62$
+    :class: sphx-glr-single-img
+
+
+
+
+
+Or we can enable maximum symmetric statistics
+
+
+.. code-block:: default
+
+
+    c = ChainConsumer().add_chain(data, parameters=parameters).configure(statistics="max_symmetric")
+    fig = c.plotter.plot()
+    fig.set_size_inches(3 + fig.get_size_inches())  # Resize fig for doco. You don't need this.
+
+
+
+
+.. image:: /examples/Basics/images/sphx_glr_plot_statistics_004.png
+    :alt: $x = 0.38\pm 0.64$, $y = 0.38\pm 0.64$
+    :class: sphx-glr-single-img
+
+
+
+
+
+Or we can enable maximum closest statistics
+
+
+.. code-block:: default
+
+
+    c = ChainConsumer().add_chain(data, parameters=parameters).configure(statistics="max_shortest")
+    fig = c.plotter.plot()
+    fig.set_size_inches(3 + fig.get_size_inches())  # Resize fig for doco. You don't need this.
+
+
+
+
+.. image:: /examples/Basics/images/sphx_glr_plot_statistics_005.png
+    :alt: $x = 0.38^{+0.78}_{-0.37}$, $y = 0.38^{+0.78}_{-0.37}$
+    :class: sphx-glr-single-img
+
+
+
+
+
+Or we can enable maximum central statistics
+
+
+.. code-block:: default
+
+
+    c = ChainConsumer().add_chain(data, parameters=parameters).configure(statistics="max_central")
+    fig = c.plotter.plot()
+    fig.set_size_inches(3 + fig.get_size_inches())  # Resize fig for doco. You don't need this.
+
+
+
+
+.. image:: /examples/Basics/images/sphx_glr_plot_statistics_006.png
+    :alt: $x = 0.38^{+1.03}_{-0.21}$, $y = 0.38^{+1.03}_{-0.20}$
+    :class: sphx-glr-single-img
+
+
+
+
+
+We can also take advantage of the ability to pass lists to ChainConsumer's
+configuration to have report different statistics for different chains.
+Please note, I don't recommend you do this in practise, it is just begging
+for confusion.
+
+
+.. code-block:: default
+
+
+    c = ChainConsumer()
+    stats = list(c.analysis._summaries.keys())
+    for stat in stats:
+        c.add_chain(data, parameters=parameters, name=stat.replace("_", " ").title())
+    c.configure(statistics=stats, bar_shade=True)
+    fig = c.plotter.plot()
+    fig.set_size_inches(3 + fig.get_size_inches())  # Resize fig for doco. You don't need this.
+
+
+
+.. image:: /examples/Basics/images/sphx_glr_plot_statistics_007.png
+    :alt: plot statistics
+    :class: sphx-glr-single-img
+
+
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  9.572 seconds)
+
+
+.. _sphx_glr_download_examples_Basics_plot_statistics.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: plot_statistics.py <plot_statistics.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: plot_statistics.ipynb <plot_statistics.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_

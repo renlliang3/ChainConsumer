@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>External axes &mdash; ChainConsumer 0.31 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/theme_override.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Subplot Spacing" href="plot_spacing.html" />
+    <link rel="prev" title="Flips, Ticks and Size" href="plot_dont_flip.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> ChainConsumer
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.31
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../plot_correlations.html">Plot Parameter Correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_covariance.html">Plot Parameter Covariance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_walk.html">Plot Walks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_distributions.html">Plot Distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_model_selection.html">Plot Model Comparison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_introduction.html">Plot Contours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_table.html">Plot Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plot_summary.html">Plot Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#basic-usages">Basic Usages</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#customisations">Customisations</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plot_blinding.html">Blinding Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_no_histograms.html">No Histograms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_dont_flip.html">Flips, Ticks and Size</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">External axes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_spacing.html">Subplot Spacing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_cloud_sigma.html">Cloud and Sigma Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_kde_extents.html">Gaussian KDE and Extents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_one_chain.html">One Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_contour_labels.html">Contour Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_fewer_parameters.html">Truncated Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_linestyles.html">Changing Linestyles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_shade_gradient.html">Shade Gradient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_font_changes.html">Change Font Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_selected_chains.html">Excluding Chains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_as_prior.html">Plotting a prior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_no_smooth.html">No Smoothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_logscale.html">Logscale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_shift.html">Shifting Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_zorder.html">Changing Z-Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_confidence_levels.html">Confidence Levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_chain_override.html">Overriding Configure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_colours_shade.html">Colours and Shading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_preliminary.html">Watermarking Plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_rainbow_serif_bins.html">Cmap and Custom Bins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_three_chains.html">Three Chains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_colorpoints.html">Colour Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_lists.html">Using List Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_legend_options.html">Legend Options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#more-complicated-examples">More Complicated Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../chain_api.html">Chain Consumer API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ChainConsumer</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Examples</a> &raquo;</li>
+        
+      <li>External axes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/examples/customisations/plot_axis.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-examples-customisations-plot-axis-py"><span class="std std-ref">here</span></a>     to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="external-axes">
+<span id="sphx-glr-examples-customisations-plot-axis-py"></span><h1>External axes<a class="headerlink" href="#external-axes" title="Permalink to this headline">¶</a></h1>
+<p>To put contours in external figures.</p>
+<p>To help in inserting contours into other plots and figures, you can call the simplified
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_contour</span></code> method and pass in an axis. Note that this is a minimal routine, and will not
+do auto-extents, labels, ticks, truth values, etc. But it will make contours for you.</p>
+<img alt="plot axis" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_axis_001.png" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">chainconsumer</span> <span class="kn">import</span> <span class="n">ChainConsumer</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span> <span class="k">as</span> <span class="n">mv</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">mv</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">cov</span><span class="o">=</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">ChainConsumer</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">add_chain</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span>
+<span class="n">c</span><span class="o">.</span><span class="n">plotter</span><span class="o">.</span><span class="n">plot_contour</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.135 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-customisations-plot-axis-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/2d2fd92319b1515183ddcc1fb44196ec/plot_axis.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_axis.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/d39772874d814e482e0108a635dd6ddc/plot_axis.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_axis.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="plot_spacing.html" class="btn btn-neutral float-right" title="Subplot Spacing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_dont_flip.html" class="btn btn-neutral float-left" title="Flips, Ticks and Size" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2016-2017, Samuel Hinton and contributors
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
